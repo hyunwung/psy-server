@@ -13,8 +13,7 @@ mongoose.connect('mongodb+srv://hyun:1234asdf@psy-server.q1l8dfq.mongodb.net/?re
 	.then(()=>console.log('MongoDB connect ...'))
 	.catch(err=>console.log(err))
 
-app.get('/',(req,res) => res.send('Hello World'))
-
+app.get('/',(req,res) => res.send('Hello World !'))
 
 app.post('/test',(req,res) => {
 	// 필요한 정보를 가져오면 데이터베이서에 넣는다.
