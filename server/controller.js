@@ -1,5 +1,4 @@
 const mongodb = require('../models/model')
-'use strict';
 
 // create something
 exports.create = (req,res) => {
@@ -9,21 +8,41 @@ exports.create = (req,res) => {
     const result = new mongodb({
         result:req.body.result
     })
-    result
-        .save(result)
-        .then(data=>{
-            res.send(data)
+    result.save()
+    .then(data=>{
+        res.send(data)
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Some error occured !"
         })
-        .catch(err=>{
-            res.status(500).send({
-                message:err.message || "Some error occured !"
-            })
-        })
+    })
 }
 
-//retrieve and return all users
-exports.find = (req,res) => {
+ //retrieve and return all users
+exports.find = (req,res) => {   
+    let resultID = req.body.resultID
+    mongodb.findById(resultID)
+    .then(data=>{
+        res.send(data)
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Some error occured !"
+        })
+    })
+}
 
+exports.show = (req,res) => {   
+    mongodb.find()    
+    .then(data=>{
+        res.send(data)
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:err.message || "Some error occured !"
+        })
+    })
 }
 
 //update a new idetified user id
