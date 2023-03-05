@@ -4,9 +4,6 @@ const route = express.Router()
 const controller = require('../server/controller')
 const services = require('./render')
 
-// get 요청
-//route.get('/',services.homeRoutes)
-
 // route.post('/test',(req,res) => {
 // 	// 필요한 정보를 가져오면 데이터베이서에 넣는다.
 // 	const choice = new Data(req.body)
